@@ -34,6 +34,9 @@ void counting_sort(int *array, size_t size)
 	int *sorted;
 	size_t i, j;
 
+	if (array == NULL || size < 2)
+		return;
+
 	max = getMax(array, size);
 
 	if (array == NULL || size < 2)
