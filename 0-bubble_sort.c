@@ -36,7 +36,6 @@ void bubble_sort(int *array, size_t size)
 			}
 		}
 
-		/*If no two elements were swapped in the inner loop, the array is already sorted */
 		if (swapped == 0)
 			break;
 
