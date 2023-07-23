@@ -12,9 +12,13 @@
 
 void bubble_sort(int *array, size_t size)
 {
+
 	size_t c, j;
 	int temp;
 	int swapped;
+
+	if (array == NULL || size < 2)
+	return;
 
 	for (c = 0; c < size; c++)
 	{
