@@ -12,7 +12,7 @@
 int partition(int *array, size_t size, int low, int high)
 {
 
-	int *pivot = array + high;
+	int *pivot = array + high - 1;
 	int i = low - 1;
 	int j;
 
