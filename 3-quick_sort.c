@@ -16,7 +16,7 @@ int partition(int *array, size_t size, int low, int high)
 	int i = low - 1;
 	int j;
 
-	for (j = low; j <= high - 1; j++)
+	for (j = low; j < high - 1; j++)
 	{
 		if (array[j] < *pivot)
 		{
@@ -24,9 +24,14 @@ int partition(int *array, size_t size, int low, int high)
 			swap(&array[i], &array[j]);
 		}
 	}
-	swap(&array[i + 1], &array[high]);
-	print_array(array, size);
+	if (array[j] > *pivot)
+	{
+		swap(&array[i + 1], &array[high]);
+		print_array(array, size);
+	}
 	return (i + 1);
+
+
 }
 /**
 * partition_sort - Recursive function to perform partition sort
