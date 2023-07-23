@@ -9,7 +9,7 @@
  * @list: Doubly linked list
  * Return: Null
  */
- 
+
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *ptr, *tmp;

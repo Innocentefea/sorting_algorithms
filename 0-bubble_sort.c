@@ -7,9 +7,8 @@
  * @array: The array of integer
  * @size: The size of the array
  *
- * Return: Null
+ * Return: Nohing
  */
-
 void bubble_sort(int *array, size_t size)
 {
 	size_t i;
@@ -18,6 +17,7 @@ void bubble_sort(int *array, size_t size)
 	if (!array || size == 0)
 		return;
 
+	do {
 		sorted = 1;
 		for (i = 0; i < size - 1; i++)
 		{
@@ -30,4 +30,6 @@ void bubble_sort(int *array, size_t size)
 				print_array(array, size);
 			}
 		}
+
+	} while (sorted == 0);
 }
