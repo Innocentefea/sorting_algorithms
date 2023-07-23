@@ -11,6 +11,7 @@
 */
 int partition(int *array, size_t size, int low, int high)
 {
+
 	int *pivot = array + high;
 	int i = low - 1;
 	int j;
@@ -37,13 +38,14 @@ int partition(int *array, size_t size, int low, int high)
 
 void partition_sort(int *array, size_t size, int low, int high)
 {
+
 	int pivot_index;
 
 	if (low < high)
 	{
 		pivot_index = partition(array, size, low, high);
 
-		partition_sort(array, size, low, pivot_index - 1);
+		partition_sort(array, size, low, pivot_index);
 		partition_sort(array, size, pivot_index + 1, high);
 	}
 }
