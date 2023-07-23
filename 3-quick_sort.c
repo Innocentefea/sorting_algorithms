@@ -24,9 +24,9 @@ int partition(int *array, size_t size, int low, int high)
 			swap(&array[i], &array[j]);
 		}
 	}
-	swap(&array[i], &array[high]);
+	swap(&array[i + 1], &array[high]);
 	print_array(array, size);
-	return (i);
+	return (i + 1);
 }
 /**
 * partition_sort - Recursive function to perform partition sort
@@ -41,11 +41,11 @@ void partition_sort(int *array, size_t size, int low, int high)
 
 	int pivot_index;
 
-	if (low < high)
+	if (high - low > 0)
 	{
 		pivot_index = partition(array, size, low, high);
 
-		partition_sort(array, size, low, pivot_index);
+		partition_sort(array, size, low, pivot_index - 1);
 		partition_sort(array, size, pivot_index + 1, high);
 	}
 }
