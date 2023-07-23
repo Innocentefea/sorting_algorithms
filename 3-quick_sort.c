@@ -12,7 +12,7 @@
 int partition(int *array, size_t size, int low, int high)
 {
 
-	int *pivot = array + high - 1;
+	int *pivot = array + high;
 	int i = low - 1;
 	int j;
 
@@ -20,10 +20,13 @@ int partition(int *array, size_t size, int low, int high)
 	{
 		if (array[j] < *pivot)
 		{
+			if (i != j)
+			{
 			i++;
 			swap(&array[i], &array[j]);
 			print_array(array, size);
 
+			}
 		}
 	}
 	if (array[j] > *pivot)
