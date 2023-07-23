@@ -24,9 +24,9 @@ int partition(int *array, size_t size, int low, int high)
 			swap(&array[i], &array[j]);
 		}
 	}
-	swap(&array[i + 1], &array[high]);
+	swap(&array[i], &array[high]);
 	print_array(array, size);
-	return (i + 1);
+	return (i);
 }
 /**
 * partition_sort - Recursive function to perform partition sort
