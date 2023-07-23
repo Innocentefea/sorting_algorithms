@@ -27,5 +27,7 @@ void quick_sort(int *array, size_t size);
 /*Advanced prototypes*/
 int getMax(int *array, size_t size);
 void counting_sort(int *array, size_t size);
+void merge_sort(int *array, size_t size);
+int *merge(int *array, lb, mid, size);
 
 #endif
