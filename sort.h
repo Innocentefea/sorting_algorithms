@@ -31,5 +31,9 @@ int partition(int *array, size_t size, int low, int high);
 void partition_sort(int *array, size_t size, int low, int high);
 void quick_sort(int *array, size_t size);
 void swap(int *xp, int *yp);
+void merge_sort(int *array, size_t size);
+void mergeSort(int *array, size_t low, size_t high);
+void merge(int *array, size_t low, size_t mid, size_t high);
+
 
 #endif
