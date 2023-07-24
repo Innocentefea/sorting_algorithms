@@ -18,8 +18,7 @@ void mergeSort(int *array, size_t low, size_t high)
 /* alloc left and right subarrays and make comparisons*/
 void merge(int *array, size_t low, size_t mid, size_t high)
 {
-	size_t i, j;
-	size_t k;
+	size_t i, j, k;
 	int *left, *right;
 	size_t left_size = mid - low;
 	size_t right_size = high - mid;
@@ -27,12 +26,12 @@ void merge(int *array, size_t low, size_t mid, size_t high)
 	left = malloc(left_size * sizeof(int));
 	right = malloc(right_size * sizeof(int));
 
-	for  (i = low; i <= mid; i++)
+	for  (i = 0; i < left_size; i++)
 	{
 		left[i] = array[low + i];
 	}
 
-	for  (j = (mid + 1); j <= high; j++)
+	for  (j = 0; j < right_size; j++)
 	{
 		right[j] = array[mid + 1 + j];
 	}
@@ -57,14 +56,14 @@ void merge(int *array, size_t low, size_t mid, size_t high)
 		k++;
 
 	}
-	while (i < (mid - low))
+	while (i < left_size)
 	{
 		array[k] = array[i];
 		i++;
 		k++;
 
 	}
-	while (j < (high - (mid + 1)))
+	while (j < right_size)
 	{
 		array[k] = array[j];
 		j++;
@@ -73,8 +72,6 @@ void merge(int *array, size_t low, size_t mid, size_t high)
 	}
 	free(left);
 	free(right);
-
-
 
 }
 
