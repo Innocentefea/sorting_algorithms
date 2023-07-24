@@ -31,7 +31,7 @@ void merge(int *array, size_t low, size_t mid, size_t high)
 		left[i] = array[low + i];
 	}
 
-	for  (j = 0; j < right_size; j++)
+	for  (j = mid; j < right_size; j++)
 	{
 		right[j] = array[mid + 1 + j];
 	}
