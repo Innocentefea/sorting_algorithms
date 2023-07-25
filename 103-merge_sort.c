@@ -30,7 +30,6 @@ void mergeSort(int *array, int *tmp_array, size_t start, size_t end)
 	print_array(array + start, end - start + 1);
 
 	merge(array, tmp_array, start, mid, end);
-
 }
 /**
 * merge - merges two sorted sub-arrays into a single sorted sub-array
