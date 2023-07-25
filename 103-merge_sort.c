@@ -16,7 +16,7 @@ void mergeSort(int *array, int *tmp_array, size_t start, size_t end)
 
 	mid = start + (end - start) / 2;
 	/*Check if the first half is bigger and adjust the middle index*/
-	if ((mid - start) > (end - mid))
+	if ((mid - start + 1) > (end - mid))
 		mid--;
 
 	mergeSort(array, tmp_array, start, mid);
