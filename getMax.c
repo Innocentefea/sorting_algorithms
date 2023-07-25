@@ -1,3 +1,4 @@
+#include <stddef.h>
 /**
 * getMax - Find the maximum value in an array.
 * @array: Pointer to the input array.

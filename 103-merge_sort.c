@@ -1,86 +1,100 @@
 #include "sort.h"
-/* repetitive calc  mid*/
-void mergeSort(int *array, size_t low, size_t high)
+/**
+* mergeSort - sorts an array of integers in ascending order.
+* @array: the array to be sorted
+* @tmp_array: a temporary array used during the sorting process
+* @start: the starting index of the sub-array to be sorted
+* @end: the ending index of the sub-array to be sorted
+* Return: void
+*/
+void mergeSort(int *array, int *tmp_array, size_t start, size_t end)
 {
 	size_t mid;
 
-	if (low < high)
-	{
-		mid =(high + low) / 2;
+	if (start >= end)
+		return;
 
-		mergeSort(array, low, mid);
-		mergeSort(array, mid + 1, high);
-		merge(array, low, mid, high);
-	}
+	mid = start + (end - start) / 2;
+	mergeSort(array, tmp_array, start, mid);
+	mergeSort(array, tmp_array, mid + 1, end);
+	/*print subarrays*/
+	printf("Merging...\n");
+	printf("[left]: ");
+	print_array(array + start, (mid - start + 1));
 
+	printf("[Right]: ");
+	print_array(array + mid + 1, (end - mid));
+
+	/*print merged*/
+	printf("[Done]: ");
+	print_array(array + start, end - start + 1);
+
+	merge(array, tmp_array, start, mid, end);
 
 }
-/* alloc left and right subarrays and make comparisons*/
-void merge(int *array, size_t low, size_t mid, size_t high)
+/**
+* merge - merges two sorted sub-arrays into a single sorted sub-array
+* @array: the array containing the two sub-arrays to be merged
+* @tmp_array: a temporary array used during the sorting process
+* @start: the starting index of the first sub-array
+* @mid: the ending index of the first sub-array
+* @end: the ending index of the second sub-array
+* Return: void
+*/
+void merge(int *array, int *tmp_array, size_t start, size_t mid, size_t end)
 {
 	size_t i, j, k;
-	int *left, *right;
-	size_t left_size = mid - low;
-	size_t right_size = high - mid;
 
-	left = malloc(left_size * sizeof(int));
-	right = malloc(right_size * sizeof(int));
+	i = start;
+	j = mid + 1;
+	k = start;
 
-	for  (i = 0; i < left_size; i++)
+	while (i <= mid && j <= end)
 	{
-		left[i] = array[low + i];
-	}
-
-	for  (j = mid; j < right_size; j++)
-	{
-		right[j] = array[mid + 1 + j];
-	}
-
-	i = 0;
-    j = 0;
-    k = low;
-	while (i < left_size && j < right_size)
-	{
-		if (left[i] <= right[j])
+		if (array[i] < array[j])
 		{
-			array[k] = left[i];
-			i++;
-
+			tmp_array[k++] = array[i++];
 		}
 		else
 		{
-			array[k] = right[j];
-			j++;
-
+			tmp_array[k++] = array[j++];
 		}
-		k++;
-
 	}
-	while (i < left_size)
+	while (i <= mid)
 	{
-		array[k] = array[i];
-		i++;
-		k++;
-
+		tmp_array[k++] = array[i++];
 	}
-	while (j < right_size)
+
+	while (j <= end)
 	{
-		array[k] = array[j];
-		j++;
-		k++;
+		tmp_array[k++] = array[j++];
+	}
+	for (i = start; i <= end; i++)
+	{
+		array[i] = tmp_array[i];
 
 	}
-	free(left);
-	free(right);
 
 }
 
+/**
+* merge_sort - sorts an array using the Merge sort algorithm
+* @array: the array to be sorted
+* @size: the number of elements in the array
+*
+* Return: void
+*/
 void merge_sort(int *array, size_t size)
 {
+	int *tmp_array;
+
 	if (array == NULL || size < 2)
-	{
 		return;
-	}
-	mergeSort(array, 0, size - 1);
+	tmp_array = malloc(size * sizeof(int));
+	if (!tmp_array)
+		return;
+
+	mergeSort(array, tmp_array, 0, size - 1);
+	free(tmp_array);
 
 }
