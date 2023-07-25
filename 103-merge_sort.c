@@ -18,13 +18,13 @@ void mergeSort(int *array, int *tmp_array, size_t start, size_t end)
 	mergeSort(array, tmp_array, start, mid);
 	mergeSort(array, tmp_array, mid + 1, end);
     /* print subarrays */
-    printf("Merging...\n");
-    printf("[left]: ");
-    print_array(array + start, mid - start + 1);
-    printf("[right]: ");
-    print_array(array + mid + 1, end - mid);
-    printf("[Done]: ");
-    print_array(array + start, end - start + 1);
+	printf("Merging...\n");
+	printf("[left]: ");
+	print_array(array + start, mid - start + 1);
+	printf("[right]: ");
+	print_array(array + mid + 1, end - mid);
+	printf("[Done]: ");
+	print_array(array + start, end - start + 1);
 
 	merge(array, tmp_array, start, mid, end);
 }
