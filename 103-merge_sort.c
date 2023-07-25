@@ -27,10 +27,12 @@ void mergeSort(int *array, int *tmp_array, size_t start, size_t end)
 	print_array(array + start, mid - start + 1);
 	printf("[right]: ");
 	print_array(array + mid + 1, end - mid);
+
+	merge(array, tmp_array, start, mid, end);
+
 	printf("[Done]: ");
 	print_array(array + start, end - start + 1);
 
-	merge(array, tmp_array, start, mid, end);
 }
 /**
 * merge - merges two sorted sub-arrays into a single sorted sub-array
